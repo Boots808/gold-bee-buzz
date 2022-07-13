@@ -9,6 +9,7 @@ const InternInfo = require('Need');
 //information about and objects for team members
 //const teamInfo = [];
 
+// NEED to add job title somewhere
 
 //prompt question list
 inquirer 
