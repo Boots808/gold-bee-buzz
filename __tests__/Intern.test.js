@@ -1,0 +1,1 @@
+const intern = ('/lib/intern.js');

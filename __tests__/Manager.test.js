@@ -1,0 +1,1 @@
+const manager = ('/lib/manager.js');
