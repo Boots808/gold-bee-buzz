@@ -1,4 +1,6 @@
-const Employee = require("../lib/employee");
+//test prompt not working for me
+
+const Employee = require("../lib/employee.js");
 
 
 //test for object for employee

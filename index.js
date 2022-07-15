@@ -1,9 +1,10 @@
 const inquirer = require('inquirer');
 //const path - require('path');
 const fs = require('fs');
-const ManagerInfo = require('Need');
-const EngineerInfo = require('Need');
-const InternInfo = require('Need');
+const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
+const Employee = require('./lib/employee');
 //const { isTypedArray } = require('util/types');
 
 //information about and objects for team members
@@ -56,3 +57,4 @@ inquirer
 
 //resource: https://www.youtube.com/watch?v=bJY3KfM77pc
 //testing resource: https://threejs.org/docs/#manual/en/buildTools/Testing-with-NPM
+//info about Javascript super command: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super
