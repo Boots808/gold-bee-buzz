@@ -55,3 +55,4 @@ inquirer
 
 
 //resource: https://www.youtube.com/watch?v=bJY3KfM77pc
+//testing resource: https://threejs.org/docs/#manual/en/buildTools/Testing-with-NPM
