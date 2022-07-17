@@ -1,8 +1,3 @@
-//need to add font awesome icons
-//need to double check whether all src links are needed
-
-// Intern Card Layout
-
 const generateIntern = function (intern) {
     return `
     <div class="col-4 mt-4">
@@ -13,7 +8,7 @@ const generateIntern = function (intern) {
     </div>
     
     <div class="card-body">
-        <p class="id"Emloyee ID: {intern.id}</p>
+        <p class="id">Employee ID: {intern.id}</p>
         <p class="email">Email Address: <a href="mailto:${intern.email}">${intern.email}</a></p>
         <p class="office">Office Number: ${intern.office}</p>
     </div>
@@ -22,7 +17,7 @@ const generateIntern = function (intern) {
 `;
 }
 
-//Enginner Card Layout
+//Engineer Card Layout
 const generateEngineer = function (engineer) {
     return `
     <div class="card h-100">
@@ -60,13 +55,13 @@ const generateManager = function (manager) {
 `
 }
 
-generateHTML=(data) => {
+templateHTML = (data) => {
     cardArray = [];
 
     for (let i = 0; i < data.length; i++) {
         const employee = data[i]
         const role = employee.getRole();
-    }
+    
 
     //functions for each role
     if (role === 'Intern') {
@@ -95,6 +90,8 @@ const teamCards = pageArray.join('')
 const generateTeamMembers = generatePage(teamCards);
 return generateTeamMembers;
 
+}
+
 //create HTML page
 const generatePage = function (teamCards) {
     return `
@@ -110,6 +107,7 @@ const generatePage = function (teamCards) {
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -132,4 +130,4 @@ const generatePage = function (teamCards) {
 }
 
 
-module.exports = generateHTML;
+module.exports = templateHTML;

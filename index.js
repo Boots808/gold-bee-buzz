@@ -1,12 +1,15 @@
 //page links and packages 
 const inquirer = require('inquirer');
 const fs = require('fs');
+const Employee = require('./lib/employee');
+const generateHTML = require('./src/templateHTML');
+
+//team member files
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
-//const Employee = require('./lib/employee');
-const generateHTML = require('./src/generateHTML');
 
+//array for team members
 const compTeamArray = [];
 
 //prompt question list start
@@ -15,12 +18,12 @@ const addIntern = () => {
     {
        type: "user input",
        name: "id",
-       message: "Please enter your intern's ID" 
+       message: "Please enter your intern's ID", 
     },
     {
         type: "user input",
         name: "name",
-        message: "Please enter your intern's full name"
+        message: "Please enter your intern's full name",
     },
     {
     type: "user input",
@@ -38,10 +41,15 @@ const addIntern = () => {
     message: "Please confirm the employee's company role is an Intern?",
     choices: ["true, false"],
 },
+{
+    type: "user input",
+    name: "school",
+    message: "Please enter attending school name",
+}
 
 ])
 .then(internInput => {
-    const {id, name, email, office } = internInput;
+    const {id, name, email, school } = internInput;
     const intern = new Intern (id, name, email, office);
 
     compTeamArray.push(intern);
@@ -50,10 +58,10 @@ const addIntern = () => {
 })
 };
 
-const newMember = () => {
+const addEmployee = () => {
     console.log('Added Intern to the Team');
 
-    const addEngineer = () => {
+    //const addEngineer = () => {
 
     return inquirer.prompt ([
         {
@@ -77,17 +85,17 @@ const newMember = () => {
          message: "Please enter the Engineer's office number",
      },
     ])}
-}
-.then(engineerInput => {
-    const {id, name, email, office } = engineerInput;
-    const engineer = new Engineer (id, name, email, office);
 
-    compTeamArray.push(engineer);
-    console.log(engineer);
+    //.then(engineerInput => {
+   // const {id, name, email, github } = engineerInput;
+    //const engineer = new Engineer (id, name, email, role, github);
 
-})
+    //compTeamArray.push(engineer);
+   // console.log(engineer);
 
-const newMember = () => {
+//})
+
+const addMember = () => {
     console.log('Added Engineer to the Team');
 }
 
@@ -96,7 +104,7 @@ const addManager = () => {
     return inquirer.prompt ([
         {
             type: "user input",
-            name: "id",
+            name: "nodeid",
             message: "Please enter the Manager's company ID" 
          },
          {
@@ -116,14 +124,14 @@ const addManager = () => {
      },
     ])}
 
-.then(managerInput => {
+//.then(managerInput => {
     const {id, name, email, office } = managerInput;
-    const manager = new Manager (id, name, email, office);
+   // const manager = new Manager (ID, name, email, office);
 
     compTeamArray.push(manager);
     console.log(manager);
 
-})
+//})
 
 const newMember = () => {
     console.log('Added Manager to the Team');
@@ -152,15 +160,15 @@ const writeFile = data => {
         return generateHTML(teamArray);
     })
 
-    .then(pageHTML => {
-        return writeFile(pageHTML);
+    .then(templateHTML => {
+        return writeFile(templateHTML);
     });
     
 
 
 
 //function call to initialize app
-init();
+//init();
 
 
 
