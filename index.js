@@ -34,9 +34,11 @@ const addManager = () => {
             type: 'user input',
             name: 'office',
             message: "Enter the Managers office number",
-        }]);
+        },
 
-    then(managerInput => {
+    ])
+
+    .then(managerInput => {
         const { name, id, email, office } = managerInput;
         const manager = new Manager (name, id, email, office);
         compTeamArray.push(manager);
@@ -76,39 +78,42 @@ return inquirer.prompt ([
         message: "Enter the employees github username",
         when: (input) => input.role === "Engineer",
     },
-    {
-        type: 'check',
-        name: 'checkMemberAdded',
-        message: "Do you need to any more employees to your team?",
-        default: false
-    }
+    // {
+    //     type: 'check',
+    //     name: 'checkMemberAdded',
+    //     message: "Do you need to any more employees to your team?",
+    //     default: false
+    // }
 ])
 
-then(employeeInfo => {
+.then( employeeInfo => {
     let { name, id, email, role, school, github, confirmAddEmployee } = employeeInfo;
     let employee;
 
-    if (role === "intern") {
-        employee = new intern (name, id, email, school);
-    } else if (role === "engineer") {
-        employee = new engineer (name, id, email, github);
+    if (role === "Engineer") {
+        employeeInfo = new engineer (name, id, email, github);
+        console.log(employee);
+
+    } else if (role === "Intern") {
+        employeeInfo = new intern (name, id, email, school);
 
         console.log(employee);
     }
-}),
+
     compTeamArray.push(employee);
 
     if (confirmAddEmployee) {
         return addEmployee(compTeamArray);
     } else {
         return compTeamArray;
-    }
+        }
+    })
 };
 
-const writeFile = data => {
-    fs.writeFile('./dist/index.html'), 
-    console.log("Your team has been successfully created!");
-};
+// const writeFile = (data) => {
+//     fs.writeFile('./dist/index.html'), 
+//     console.log("Your team has been successfully created!");
+// };
 
 addManager()
 .then(addEmployee)
