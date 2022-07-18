@@ -36,8 +36,8 @@ const addManager = () => {
             message: "Enter the Managers office number",
         }]),
 
-    then(managerInfo => {
-        const { name, id, email, office } = managerInfo;
+    then(managerInput => {
+        const { name, id, email, office } = managerInput;
         const manager = new Manager (name, id, email, office);
         compTeamArray.push(manager);
         //console.log(manager);
@@ -45,10 +45,11 @@ const addManager = () => {
 };
 
 const addEmployee = () => {
-    return inquirer.prompt //([
+
+return inquirer.prompt ([
     
     {
-        name: 'role'
+        name: 'role',
         type: 'list',
         message: "Select the employees role with the Company",
         choices: ['Intern, Engineer, Other'],
@@ -58,6 +59,7 @@ const addEmployee = () => {
         name: 'name',
         message: "Enter the employees name",
     },
+    {
         type: 'user input',
         name: 'email',
         message: "Enter the employees email address",
@@ -72,8 +74,8 @@ const addEmployee = () => {
         type: 'user input',
         name: 'github',
         message: "Enter the employees github username",
-        when (input) => input.role === "Engineer",
-    }
+        when: (input) => input.role === "Engineer",
+    },
     {
         type: 'check',
         name: 'checkMemberAdded',
@@ -93,6 +95,7 @@ then(employeeInfo => {
 
         console.log(employee);
     }
+}),
     compTeamArray.push(employee);
 
     if (confirmAddEmployee) {
@@ -100,7 +103,7 @@ then(employeeInfo => {
     } else {
         return compTeamArray;
     }
-});
+};
 
 const writeFile = data => {
     fs.writeFile('./dist/index.html'), 
