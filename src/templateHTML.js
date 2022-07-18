@@ -1,16 +1,16 @@
-const generateIntern = function (intern) {
+const generateManager = function (manager) {
     return `
     <div class="col-4 mt-4">
     <div ckass="card h-100">
     <div class ="card-header">
-        <h3>${intern.name}</h3>
-        <h4>Intern</h4><i class="NEED">NEED</i>
+        <h3>${manager.name}</h3>
+        <h4>Team Manager</h4><i class="NEED">NEED</i>
     </div>
     
     <div class="card-body">
         <p class="id">Employee ID: {intern.id}</p>
         <p class="email">Email Address: <a href="mailto:${intern.email}">${intern.email}</a></p>
-        <p class="office">Office Number: ${intern.office}</p>
+        <p class="office">Office Number: ${manager.id}</p>
     </div>
 </div>
 </div>
@@ -23,37 +23,37 @@ const generateEngineer = function (engineer) {
     <div class="card h-100">
     <div class="card-header">
     <h3>${engineer.name}</h3>
-    <h4>Engineer</h4><i class="NEED">NEED</i>
+    <h4>Team Engineer</h4><i class="NEED">NEED</i>
 </div>
 
 <div class="card-body">
     <p class="id">Employee ID: ${engineer.id}</p>
     <p class="email">Email Address: <a href="mailto:${engineer.email}">${enigineer.email}</a></p>
-    <p class="office">Office Number: ${engineer.office}<p>
+    <p class="Github Username: <a href="https://github.com/${engineer.github}">${engineer.github}</a></p>
         </div>
     </div>
 </div>
 `
 }
 
-//Manager Card Layout
-const generateManager = function (manager) {
+//Intern Card Layout
+const generateIntern = function (intern) {
     return `
     <div class="card h-100">
     <div class="card-header">
-    <h3>${manager.name}</h3>
-    <h4>Team Manager</h4><i class="Need">NEED</i>
+    <h3>${intern.name}</h3>
+    <h4>Team Intern</h4><i class="Need">NEED</i>
 </div>
 
 <div class="card-body">
-    <p class="id">Employee ID: ${manager.id}</p>
-    <p class="email">Email Address: <a href="mailto:${manager.email}">${manager.email}</a></p>
-    <p class="office">Office Number: ${manager.office}<p>
+    <p class="id">Company ID: ${intern.id}</p>
+    <p class="email">Email Address: <a href="mailto:${intern.email}">${intern.email}</a></p>
+    <p class="School">School Attending: ${intern.school}<p>
         </div>
     </div>
 </div>
 `
-}
+};
 
 templateHTML = (data) => {
     cardArray = [];
@@ -64,10 +64,10 @@ templateHTML = (data) => {
     
 
     //functions for each role
-    if (role === 'Intern') {
-        const cardIntern = generateIntern(employee);
+    if (role === 'Manager') {
+        const cardManager = generateManager(employee);
 
-        cardArray.push(cardIntern);
+        cardArray.push(cardManager);
     }
 
     if (role === 'Engineer') {
@@ -76,15 +76,15 @@ templateHTML = (data) => {
         cardArray.push(cardEngineer);
     }
 
-    if (role === 'Manager') {
-        const cardManager = generateManager(employee);
+    if (role === 'Intern') {
+        const cardIntern = generateIntern(employee);
 
-        cardArray.push(cardManager);
+        cardArray.push(cardIntern);
     }
 }
 
 //join cards and array (strings)
-const teamCards = pageArray.join('')
+const teamCards = cardArray.join('')
 
 //return
 const generateTeamMembers = generatePage(teamCards);
