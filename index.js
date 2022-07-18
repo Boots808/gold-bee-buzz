@@ -8,13 +8,12 @@ const templateHTML = require('./src/templateHTML');
 const Manager = require('./lib/manager');
 const engineer = require('./lib/engineer');
 const intern = require('./lib/intern');
-const { inherits } = require('util');
 
 //array for team members
 const compTeamArray = [];
 
 //prompt question list start w. Manager
-function addManager () {
+const addManager = () => {
     return inquirer.prompt ([
         {
             type: 'user input',
@@ -35,7 +34,7 @@ function addManager () {
             type: 'user input',
             name: 'office',
             message: "Enter the Managers office number",
-        }]),
+        }]);
 
     then(managerInput => {
         const { name, id, email, office } = managerInput;
@@ -53,7 +52,7 @@ return inquirer.prompt ([
         name: 'role',
         type: 'list',
         message: "Select the employees role with the Company",
-        choices: ['Intern, Engineer, Other'],
+        choices: ['Intern', 'Engineer']
     },
     {
         type: 'user input',
